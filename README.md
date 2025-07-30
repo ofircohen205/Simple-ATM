@@ -58,7 +58,9 @@ This will start both the backend and frontend containers.
 
 ## Heroku Deployment
 
-For instructions on deploying this application to Heroku, see the [Heroku Deployment Guide](./HEROKU_DEPLOYMENT.md).
+This application is deployed to Heroku using GitHub Actions and Docker containers. The backend is automatically deployed when changes are pushed to the main branch.
+
+For detailed instructions on the deployment process, see the [Heroku Deployment Guide](./HEROKU_DEPLOYMENT.md).
 
 ## API Documentation
 

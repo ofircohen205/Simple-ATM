@@ -31,8 +31,8 @@ A simple ATM API built with FastAPI that allows for basic banking operations suc
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd DoubleVerifyHomeAssignment
+   git clone https://github.com/your-username/Simple-ATM.git
+   cd Simple-ATM/backend
    ```
 
 2. Set up a virtual environment and install dependencies:
@@ -59,6 +59,26 @@ A simple ATM API built with FastAPI that allows for basic banking operations suc
    ```bash
    docker run -p 8000:80 atm-api
    ```
+
+### Heroku Deployment with GitHub Actions
+
+This project is configured for automatic deployment to Heroku using GitHub Actions. When changes are pushed to the main branch, the following happens:
+
+1. GitHub Actions workflow is triggered
+2. The backend Docker image is built
+3. The image is pushed to Heroku Container Registry
+4. The application is released on Heroku
+
+The deployment configuration can be found in `.github/workflows/deploy.yml` at the root of the repository.
+
+To set up your own deployment:
+
+1. Create a Heroku app
+2. Add the following secrets to your GitHub repository:
+   - `HEROKU_API_KEY`: Your Heroku API key
+   - `HEROKU_APP_NAME`: Your Heroku app name
+
+For more details, see the [Heroku Deployment Guide](../HEROKU_DEPLOYMENT.md) in the root of the repository.
 
 ## Running the Application
 
@@ -161,7 +181,7 @@ pytest -v
 ## Project Structure
 
 ```
-DoubleVerifyHomeAssignment/
+backend/
 ├── app/
 │   ├── db/
 │   │   ├── __init__.py
@@ -175,13 +195,14 @@ DoubleVerifyHomeAssignment/
 │   ├── __init__.py
 │   └── main.py              # Application entry point
 ├── data/
-│   └── atm.db               # SQLite database file
+│   └── atm.db               # SQLite database file (local development only)
 ├── tests/
 │   ├── unit/
 │   │   ├── __init__.py
 │   │   ├── conftest.py      # Test configuration
 │   │   └── test_deposit_and_balance.py  # Tests
-├── Dockerfile               # Docker configuration
+├── Dockerfile               # Docker configuration for containerization
+├── Procfile                 # Heroku deployment configuration
 ├── pyproject.toml           # Project dependencies
 ├── README.md                # This file
 └── uv.lock                  # Lock file for dependencies
